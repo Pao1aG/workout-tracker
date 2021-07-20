@@ -25,12 +25,23 @@ router.get("/", async (req, res) => {
 });
 
 // /api/workouts/range GET
-
 router.get("/range", async (req, res) => {
     try{
 
         //this is where you will sum all the durations of exercises
         //sort results with total duration of workouts
+        //combined weight is calculated by stats.js
+        const workoutData = await Workout.aggregate([{
+            $addFields: {
+                totalDuration: {$sum: "$exercises.duration"}
+            }
+        }]);
+        
+
+        console.log(workoutData);
+
+        res.status(200).json(workoutData);
+
 
     } catch (err) {
         console.log(err);
@@ -63,7 +74,6 @@ router.put("/:id", async ({body}, res) => {
     console.log(body);
 
     try{
-
         //first object is to filter, DELETED FIRST OBJECT AND IT WORKED
         //second object is the document being updated
         const workoutData = await Workout.updateOne({$set: {body:body}});
