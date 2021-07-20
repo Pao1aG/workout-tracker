@@ -19,6 +19,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", {
   useUnifiedTopology: true,
   useCreateIndex: true});
 
+
+//require routes folder for express
+app.use(require("./routes/index"));
+
 app.listen(PORT, () => {
 console.log(`App running on port ${PORT}!`);
 });
