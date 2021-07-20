@@ -5,7 +5,10 @@ const router = require("express").Router();
 router.get("/", async (req, res) => {
     try{
         //find all documents
+        //send back total duration ->Total Workout Duration: undefined
+        //mongoose.aggregate method
         const workoutData = await Workout.find({});
+        console.log(workoutData);
 
         res.status(200).json(workoutData);
 
@@ -15,31 +18,13 @@ router.get("/", async (req, res) => {
     }
 });
 
-// /api/workouts/range
+// /api/workouts/range GET
 
 router.get("/range", async (req, res) => {
     try{
 
         //this is where you will sum all the durations of exercises
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
-
-// /api/workouts/:id PUT
-router.put("/:id", async ({body}, res) => {
-    console.log(body);
-
-    try{
-
-        //first object is to filter, DELETED FIRST OBJECT AND IT WORKED
-        //second object is the document being updated
-        const workoutData = await Workout.updateOne({$set: {body:body}});
-
-        res.status(200).json(workoutData); 
+        //sort results with total duration of workouts
 
     } catch (err) {
         console.log(err);
@@ -66,5 +51,24 @@ router.post("/", async ({body}, res) => {
         res.status(500).json(err);
     }
 });
+
+// /api/workouts/:id PUT
+router.put("/:id", async ({body}, res) => {
+    console.log(body);
+
+    try{
+
+        //first object is to filter, DELETED FIRST OBJECT AND IT WORKED
+        //second object is the document being updated
+        const workoutData = await Workout.updateOne({$set: {body:body}});
+
+        res.status(200).json(workoutData); 
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 
 module.exports = router;
