@@ -35,7 +35,7 @@ router.put("/:id", async ({body}, res) => {
 
         //first object is to filter, 
         //second object is the document being updated
-        const workoutData = await Workout.updateOne({name: req.params.id}, {$set: {body:body}});
+        const workoutData = await Workout.updateOne({name: body.params.id}, {$set: {body:body}});
 
         res.status(200).json(workoutData); 
 
