@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-const Workout = require("./models");
+// const {Workout} = require("./models");
 const app = express();
 
 app.use(logger("dev"));
@@ -18,7 +18,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", {
   useNewUrlParser: true, 
   useUnifiedTopology: true,
   useCreateIndex: true});
-
 
 app.listen(PORT, () => {
 console.log(`App running on port ${PORT}!`);
