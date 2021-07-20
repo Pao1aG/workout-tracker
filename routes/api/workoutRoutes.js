@@ -4,9 +4,9 @@ const router = require("express").Router();
 // /api/workouts/ GET
 router.get("/", async (req, res) => {
     try{
-        //find all documents
         //send back total duration ->Total Workout Duration: undefined
         //mongoose.aggregate method
+        //find all documents is what we have so far in this Workout.find({})
         const workoutData = await Workout.find({});
         console.log(workoutData);
 
