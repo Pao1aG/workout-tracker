@@ -31,11 +31,13 @@ router.get("/range", async (req, res) => {
 
 // /api/workouts/:id PUT
 router.put("/:id", async ({body}, res) => {
+    console.log(body);
+
     try{
 
-        //first object is to filter, 
+        //first object is to filter, DELETED FIRST OBJECT AND IT WORKED
         //second object is the document being updated
-        const workoutData = await Workout.updateOne({name: body.params.id}, {$set: {body:body}});
+        const workoutData = await Workout.updateOne({$set: {body:body}});
 
         res.status(200).json(workoutData); 
 
@@ -47,6 +49,8 @@ router.put("/:id", async ({body}, res) => {
 
 // /api/workouts POST
 router.post("/", async ({body}, res) => {
+    console.log(body);
+
     try{
 
         const workoutData = await Workout.create({
