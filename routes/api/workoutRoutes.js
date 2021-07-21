@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
             }
         }]);
 
-        console.log(workoutData);
+        // console.log(workoutData);
 
         res.status(200).json(workoutData);
 
@@ -68,13 +68,16 @@ router.post("/", async ({body}, res) => {
 });
 
 // /api/workouts/:id PUT
-router.put("/:id", async ({body}, res) => {
-    console.log(body);
+router.put("/:id", async (req, res) => {
+    console.log(req.params.id);
+    console.log(req.body);
 
     try{
-        //first object is to filter, DELETED FIRST OBJECT AND IT WORKED
-        //second object is the document being updated
-        const workoutData = await Workout.updateOne({$push: {"exercises":body}});
+        /*pushing req.body to exercises array
+        this will update the current Workout based on the id that is assigned
+        to instance of Workout upon creation (post request) */
+        const findWorkout = await Workout.findOne({_id: req.params.id});
+        const workoutData = await findWorkout.updateOne({$push: {"exercises":req.body}});
 
         res.status(200).json(workoutData); 
 
