@@ -66,7 +66,7 @@ Then open your browser at: **localhost:3000/**
 
 </br>
 
-> To see the deployed application in Heroku, visit <>
+> To see the deployed application in Heroku, visit <sdfsf>
 
 ## Images
 
