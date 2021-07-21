@@ -25,6 +25,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/morning-coast-6
 //require routes folder for express
 app.use(require("./routes/index"));
 
+//test comment
+
 app.listen(PORT, () => {
 console.log(`App running on port ${PORT}!`);
 });
