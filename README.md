@@ -66,9 +66,10 @@ Then open your browser at: **localhost:3000/**
 
 </br>
 
-> To see the deployed application in Heroku, visit <sdfsf>
+> To see the deployed application in Heroku, visit <https://morning-coast-60192.herokuapp.com/>
 
 ## Images
+![Screenshot of Workout Tracker](public\images\fitness_homepage.png)
 
 ## Credits
 MIT badge was accessed from GitHub user [Lukas Himsel](https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba)
